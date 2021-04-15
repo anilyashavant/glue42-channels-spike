@@ -5,6 +5,18 @@ const doWhenGlueReady = async (glue) => {
         visualizeChannelsContext(JSON.stringify(data, null, 2));
     });
 
+    //aby: adding code to save additional data when saving layout
+    glue.layouts.onSaveRequested((cbData) => {
+        return { windowContext: { myname: glue42gd.application, channelId: glue.channels.my(), layoutName: cbData.layoutName}, activityContext: {} }
+    });
+
+    //aby: let us read in the data that was saved while saving the layout
+    const myWin = glue.windows.my();
+    myWin.getContext().then((windowCtx) => {
+        document.getElementById("layout-context").innerHTML = JSON.stringify(windowCtx);
+    });
+
+
     // instead of doing setTimeouts, we should get glue.channels.my() promise version
     // to ask for the current channel
     setTimeout(async () => {

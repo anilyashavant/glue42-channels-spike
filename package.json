@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-	"serve": "serve -p 8889",
+    "serve": "serve -p 8889",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
